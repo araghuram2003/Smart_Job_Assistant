@@ -3,7 +3,6 @@ import os
 from dotenv import load_dotenv
 from PyPDF2 import PdfReader
 import google.generativeai as genai
-from groq import Groq
 import docx2txt
 from datetime import datetime
 import re
@@ -18,10 +17,6 @@ logger = logging.getLogger(__name__)
 
 # Configure Gemini AI
 genai.configure(api_key=os.getenv("Google_Gemini_ai_key"))
-
-# Configure Groq AI
-
-groq_client = Groq(api_key=os.getenv("Groq_api_key"))
 
 class ATSAnalyzer:
     # Language prompts dictionary
@@ -108,8 +103,7 @@ Provide a brief overview:
 
     # AI models
     AI_MODELS = {
-        "Google Gemini": "🤖 Gemini AI (Recommended, Slow)",
-        "Groq": "🤖 Groq AI (Not so accurate, Fast)"
+        "Google Gemini": "🤖 Gemini AI (Recommended, Slow)"
     }
 
     # Cold mail types
@@ -233,35 +227,6 @@ Best regards,
         return error_messages.get(language, error_messages["English"])
 
     @staticmethod
-    def format_groq_messages(selected_lang, input_prompt, job_description, pdf_text, language):
-        """Format messages for Groq API"""
-        return [
-            {
-                "role": "system",
-                "content": selected_lang["system_msg"]
-            },
-            {
-                "role": "user",
-                "content": f"""{selected_lang["user_msg"]}
-
-Analysis Requirements:
-{input_prompt}
-
-Job Description:
-{job_description}
-
-Resume Content:
-{pdf_text}
-
-Remember to:
-1. Keep the analysis in {language}
-2. Follow the exact format specified
-3. Provide clear, actionable feedback
-4. Include a numerical match score"""
-            }
-        ]
-
-    @staticmethod
     def get_ai_response(model_choice, input_prompt, pdf_text, job_description, language="English"):
         """Get AI response from selected model"""
         try:
@@ -269,29 +234,6 @@ Remember to:
             
             if model_choice == "Google Gemini":
                 return ATSAnalyzer.get_gemini_response(input_prompt, pdf_text, job_description, language)
-            
-            # For Groq model
-            messages = ATSAnalyzer.format_groq_messages(
-                selected_lang, input_prompt, job_description, pdf_text, language
-            )
-
-            # Using Mixtral model with optimized parameters
-            chat_completion = groq_client.chat.completions.create(
-                messages=messages,
-                model="mixtral-8x7b-32768",
-                temperature=0.5,
-                max_tokens=4000,
-                top_p=1,
-                frequency_penalty=0,
-                presence_penalty=0
-            )
-            
-            response = chat_completion.choices[0].message.content
-            if not response or len(response.strip()) < 10:
-                raise Exception("Invalid or empty response received")
-                
-            # Add language-specific formatting
-            return selected_lang["result_prefix"] + response
             
         except Exception as e:
             logger.error(f"API Error: {str(e)}")
@@ -380,19 +322,8 @@ Remember to:
                 response = model.generate_content([prompt, resume_text, job_description])
                 generated_content = response.text
             else:
-                groq_client = Groq(api_key=os.getenv('Groq_api_key'))
-                chat_completion = groq_client.chat.completions.create(
-                    messages=[
-                        {
-                            "role": "user",
-                            "content": f"{prompt}\n\nResume:\n{resume_text}\n\nJob Description:\n{job_description}"
-                        }
-                    ],
-                    model="mixtral-8x7b-32768",
-                    temperature=0.5,
-                )
-                generated_content = chat_completion.choices[0].message.content
-
+                raise Exception("Only Google Gemini model is supported")
+                
             # Replace basic placeholders with personal information
             generated_content = generated_content.replace("[Your Name]", personal_info.get("name", "[Your Name]"))
             generated_content = generated_content.replace("[Your Email Address]", personal_info.get("email", "[Your Email]"))
