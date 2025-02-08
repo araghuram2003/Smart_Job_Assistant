@@ -16,31 +16,32 @@ logger = logging.getLogger(__name__)
 # Load environment variables from .env file (local development)
 load_dotenv()
 
-# Get API keys from environment or Streamlit secrets
-def get_api_key(key_name):
-    """Get API key from environment variables or Streamlit secrets"""
-    try:
-        # Try getting from Streamlit secrets first
-        return st.secrets[key_name]
-    except:
-        # Fall back to environment variable
-        return os.getenv(key_name)
+# Get API keys
+if 'Google_Gemini_ai_key' in st.secrets:
+    gemini_api_key = st.secrets['Google_Gemini_ai_key']
+else:
+    gemini_api_key = os.getenv('Google_Gemini_ai_key')
+
+if 'Groq_api_key' in st.secrets:
+    groq_api_key = st.secrets['Groq_api_key']
+else:
+    groq_api_key = os.getenv('Groq_api_key')
 
 # Configure Gemini AI
-gemini_api_key = get_api_key("Google_Gemini_ai_key")
 if gemini_api_key:
     genai.configure(api_key=gemini_api_key)
+    st.success('✅ Google Gemini AI configured successfully!')
 else:
     st.error("⚠️ Google Gemini API key not found. Please check your configuration.")
 
 # Configure Groq AI
-groq_api_key = get_api_key("Groq_api_key")
 try:
     if not groq_api_key:
         st.warning("⚠️ Groq API key not found. Some features may be limited.")
         groq_client = None
     else:
         groq_client = Groq(api_key=groq_api_key)
+        st.success('✅ Groq AI configured successfully!')
 except Exception as e:
     logger.error(f"Error initializing Groq client: {str(e)}")
     st.warning("⚠️ Error initializing Groq client. Some features may be limited.")
@@ -1140,12 +1141,8 @@ def main():
         }
 
         @keyframes borderGlow {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.5;
-            }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
         </style>
     """, unsafe_allow_html=True)
