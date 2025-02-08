@@ -20,7 +20,16 @@ logger = logging.getLogger(__name__)
 genai.configure(api_key=os.getenv("Google_Gemini_ai_key"))
 
 # Configure Groq AI
-groq_client = Groq(api_key=os.getenv("Groq_api_key"))
+groq_api_key = os.getenv("Groq_api_key")
+try:
+    if not groq_api_key:
+        st.warning("⚠️ Groq API key not found. Some features may be limited.")
+        groq_client = None
+    else:
+        groq_client = Groq(api_key=groq_api_key)
+except Exception as e:
+    st.warning("⚠️ Error initializing Groq client. Some features may be limited.")
+    groq_client = None
 
 class ATSAnalyzer:
     # Language prompts dictionary
@@ -270,6 +279,10 @@ Remember to:
                 return ATSAnalyzer.get_gemini_response(input_prompt, pdf_text, job_description, language)
             
             # For Groq model
+            if groq_client is None:
+                st.error("⚠️ Groq AI is not available. Please use Google Gemini instead.")
+                return ATSAnalyzer.get_gemini_response(input_prompt, pdf_text, job_description, language)
+                
             messages = ATSAnalyzer.format_groq_messages(
                 selected_lang, input_prompt, job_description, pdf_text, language
             )
@@ -344,53 +357,31 @@ Remember to:
             return None
 
     @staticmethod
-    def generate_cold_mail(job_description, resume_text, model_choice="Google Gemini", template_type="Professional and Straightforward", personal_info={}):
-        """Generate a cold mail based on job description and resume"""
+    def generate_cold_mail(model_choice, prompt, resume_text, job_description, personal_info):
+        """Generate a cold mail using the selected AI model"""
         try:
-            # Get the base template
-            template = ATSAnalyzer.COLD_MAIL_TYPES[template_type]["template"]
-            
-            # Create prompt for AI to extract relevant information
-            prompt = f"""
-            Analyze the resume and job description to extract relevant information for a cold mail.
-            Use the following template style: {template_type}
-
-            Please identify:
-            1. Key skills and experiences that match the job requirements
-            2. Specific company achievements or projects to mention
-            3. Relevant domain expertise
-            4. Professional accomplishments
-            5. Technical tools and technologies
-
-            Then, use this information to customize the following template while maintaining its structure:
-
-            {template}
-
-            Make sure to:
-            1. Keep the tone consistent with the chosen style
-            2. Include specific details from the resume and job description
-            3. Maintain professionalism
-            4. Make it personalized and engaging
-            """
-            
             if model_choice == "Google Gemini":
-                genai.configure(api_key=os.getenv('Google_Gemini_ai_key'))
-                model = genai.GenerativeModel('gemini-pro')
+                model = genai.GenerativeModel("gemini-pro")
                 response = model.generate_content([prompt, resume_text, job_description])
                 generated_content = response.text
             else:
-                groq_client = Groq(api_key=os.getenv('Groq_api_key'))
-                chat_completion = groq_client.chat.completions.create(
-                    messages=[
-                        {
-                            "role": "user",
-                            "content": f"{prompt}\n\nResume:\n{resume_text}\n\nJob Description:\n{job_description}"
-                        }
-                    ],
-                    model="mixtral-8x7b-32768",
-                    temperature=0.5,
-                )
-                generated_content = chat_completion.choices[0].message.content
+                if groq_client is None:
+                    st.error("⚠️ Groq AI is not available. Please use Google Gemini instead.")
+                    model = genai.GenerativeModel("gemini-pro")
+                    response = model.generate_content([prompt, resume_text, job_description])
+                    generated_content = response.text
+                else:
+                    chat_completion = groq_client.chat.completions.create(
+                        messages=[
+                            {
+                                "role": "user",
+                                "content": f"{prompt}\n\nResume:\n{resume_text}\n\nJob Description:\n{job_description}"
+                            }
+                        ],
+                        model="mixtral-8x7b-32768",
+                        temperature=0.5,
+                    )
+                    generated_content = chat_completion.choices[0].message.content
 
             # Replace basic placeholders with personal information
             generated_content = generated_content.replace("[Your Name]", personal_info.get("name", "[Your Name]"))
@@ -536,20 +527,14 @@ def main():
         }
 
         @keyframes moveGradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .stButton > button:hover {
             transform: translateY(-2px) !important;
-            box-shadow: 0 0 20px rgba(0, 102, 204, 0.5) !important;
+            box-shadow: 0 0 20px rgba(0, 102, 204, 0.2) !important;
             color: #fff !important;
         }
 
@@ -1361,10 +1346,10 @@ def main():
                         
                         # Generate cold mail
                         cold_mail = ATSAnalyzer.generate_cold_mail(
-                            job_description=job_description,
-                            resume_text=doc_text,
                             model_choice=model_choice,
-                            template_type=cold_mail_type,
+                            prompt=template,
+                            resume_text=doc_text,
+                            job_description=job_description,
                             personal_info={
                                 "name": name,
                                 "email": email,
