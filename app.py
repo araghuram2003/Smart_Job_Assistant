@@ -1,4 +1,18 @@
 import streamlit as st
+
+# Must be the first Streamlit command
+st.set_page_config(
+    page_title="Smart Job Assistant",
+    page_icon="💼",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': 'https://www.example.com/help',
+        'Report a bug': "https://www.example.com/bug",
+        'About': "# Smart Job Assistant\nPowered by Advanced AI 🚀"
+    }
+)
+
 import os
 from dotenv import load_dotenv
 from PyPDF2 import PdfReader
@@ -415,19 +429,6 @@ Remember to:
 
 def main():
     # Theme configuration
-    st.set_page_config(
-        page_title=" Smart Job Assistant",
-        page_icon="💼",
-        layout="wide",
-        initial_sidebar_state="expanded",
-        menu_items={
-            'Get Help': 'https://www.example.com/help',
-            'Report a bug': "https://www.example.com/bug",
-            'About': "# Smart Job Assistant\nPowered by Advanced AI 🚀"
-        }
-    )
-
-    # Custom CSS for futuristic UI
     st.markdown("""
         <style>
         /* Updated color variables */
