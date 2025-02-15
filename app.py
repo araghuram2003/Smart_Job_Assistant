@@ -1402,7 +1402,7 @@ def main():
                 ⚠️ AI can make mistakes.Please Double Check the Response
             </div>
             <div style='font-size: 10px; color: rgba(255,255,255,0.7);'>
-                🧠 Smart Job Assistant • © 2025 A.Raghu Ram. All rights reserved.
+                💼 Smart Job Assistant • © 2025 A.Raghu Ram. All rights reserved.
             </div>
         </div>
         """,
