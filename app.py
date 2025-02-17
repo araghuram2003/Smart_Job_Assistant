@@ -1378,7 +1378,7 @@ def main():
                 doc_text = ATSAnalyzer.extract_text(uploaded_resume)
                 
                 if doc_text:
-                    with st.spinner("🤖 Crafting your personalized cold mail..."):
+                    with st.spinner("📨 Crafting your personalized cold mail..."):
                         # Get the selected template
                         template = ATSAnalyzer.COLD_MAIL_TYPES[cold_mail_type]["template"]
                         
