@@ -171,8 +171,8 @@ Provide a brief overview:
 
     # AI models
     AI_MODELS = {
-        "Google Gemini": "🤖 Gemini AI (Recommended, Slow)",
-        "Groq": "🤖 Groq AI (Not so accurate, Fast)"
+        "Google Gemini": "🤖 Google Gemini (High accurate, Sharp and reliable)",
+        "Groq": "🤖 Groq (Fast but moderately accurate)"
     }
 
     # Cold mail types
