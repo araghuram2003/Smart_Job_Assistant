@@ -140,7 +140,8 @@ Impactful language: Help me use action verbs and strong language to make my resu
 Industry-specific terminology: Suggest appropriate terminology and jargon to use.
 
 4.Resume length and format: Advise on the ideal length and format for my industry and experience level.
-Rewrite and Formatting: Based on your analysis and recommendations, rewrite my resume to incorporate all the suggested improvements.  Ensure the final version is clean, professional, and easy to read.  Maintain consistent formatting throughout.""",
+Rewrite and Formatting: Based on your analysis and recommendations, rewrite my resume to incorporate all the suggested improvements.  Ensure the final version is clean, professional, and easy to read.  Maintain consistent formatting throughout.
+        """,
         "Skills Gap Analysis": """
 Focus on skills analysis:
 1. Matching Skills
