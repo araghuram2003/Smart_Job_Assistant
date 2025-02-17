@@ -121,6 +121,26 @@ Provide a comprehensive analysis including:
 4. Education Fit
 5. Improvement Suggestions
         """,
+         "ATS Optimization": """
+I need you to act as an expert resume writer and optimization specialist. Your ultimate goal is to create a powerful and highly effective resume for me that excels in all aspects: ATS compatibility, recruiter appeal, and alignment with industry best practices.
+
+1.ATS Compatibility Analysis:Thoroughly review my resume for any elements that might hinder its performance in ATS scans.  Identify specific areas for improvement, including:Formatting issues (e.g., use of tables, images, special characters, unusual fonts)
+File format (recommend the most ATS-friendly format)
+Keyword optimization (lack of relevant keywords, keyword stuffing)
+Section headings and organization (ensure logical structure and standard headings)
+Date formats and other data inconsistencies
+
+2.Content Enhancement for Recruiter Appeal:  Suggest specific changes to better highlight my technical skills, projects, and achievements.  Focus on making these elements stand out to recruiters:
+Quantifiable achievements:Help me rephrase accomplishments to showcase quantifiable results (e.g., "Increased sales by 15%" instead of "Increased sales").
+Project descriptions: Advise on how to write concise and compelling project descriptions that emphasize my contributions and the project's impact.
+Technical skills: Ensure my technical skills are prominently displayed and categorized effectively. Suggest ways to showcase proficiency levels (e.g., beginner, intermediate, expert).
+Impactful language: Help me use action verbs and strong language to make my resume more dynamic and engaging.
+
+3.Industry Alignment and Tailoring: Provide recommendations on how to tailor my resume language and structure to align with common industry standards and specific job descriptions (I will provide example job descriptions if needed).  This includes:Keyword matching:Explain how to identify and incorporate relevant keywords from job descriptions.
+Industry-specific terminology: Suggest appropriate terminology and jargon to use.
+
+4.Resume length and format: Advise on the ideal length and format for my industry and experience level.
+Rewrite and Formatting: Based on your analysis and recommendations, rewrite my resume to incorporate all the suggested improvements.  Ensure the final version is clean, professional, and easy to read.  Maintain consistent formatting throughout.""",
         "Skills Gap Analysis": """
 Focus on skills analysis:
 1. Matching Skills
@@ -128,13 +148,7 @@ Focus on skills analysis:
 3. Recommended Skills to Add
 4. Skill Level Assessment
         """,
-        "ATS Optimization": """
-Analyze ATS compatibility:
-1. Keyword Optimization Score
-2. Format Assessment
-3. Section Organization
-4. ATS-friendly Improvements
-        """,
+       ,
         "Quick Summary": """
 Provide a brief overview:
 1. Match Percentage
