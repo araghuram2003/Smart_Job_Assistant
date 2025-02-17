@@ -147,8 +147,8 @@ Project descriptions: Advise on how to write concise and compelling project desc
 Technical skills: Ensure my technical skills are prominently displayed and categorized effectively. Suggest ways to showcase proficiency levels (e.g., beginner, intermediate, expert).
 Impactful language: Help me use action verbs and strong language to make my resume more dynamic and engaging.
 
-3.Industry Alignment and Tailoring: Provide recommendations on how to tailor my resume language and structure to align with common industry standards and specific job descriptions (I will provide example job descriptions if needed).
-This includes:Keyword matching:Explain how to identify and incorporate relevant keywords from job descriptions.
+3.Industry Alignment and Tailoring: Provide recommendations on how to tailor my resume language and structure to align with common industry standards and specific job descriptions.
+This includes Keyword matching:Explain how to identify and incorporate relevant keywords from job descriptions.
 Industry-specific terminology: Suggest appropriate terminology and jargon to use.
 
 4.Resume length and format: Advise on the ideal length and format for my industry and experience level.
@@ -156,11 +156,8 @@ Industry-specific terminology: Suggest appropriate terminology and jargon to use
         "Skills Gap Analysis": """
         Provide a concise skills analysis for the candidate, focusing on the following areas:
 1.Matching Skills: List the candidate's skills that directly align with the job requirements, quantifying their proficiency where possible.
-
 2.Missing Critical Skills: List the essential skills required for the role that the candidate lacks, prioritizing them based on their importance to job performance.
-
 3.Recommended Skills to Add: List skills that would significantly enhance the candidate's suitability for the role or their future growth within the company, explaining the rationale behind each recommendation.
-
 4.Skill Level Assessment: Provide a qualitative assessment of the candidate's skill level for each matching skill using terms like Beginner, Intermediate, Proficient, and Expert.
         """,
         "Quick Summary": """
