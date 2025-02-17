@@ -1269,7 +1269,7 @@ def main():
             )
 
         with col2:
-            st.subheader("📄 Resume")
+            st.subheader("📄 Your Resume")
             uploaded_file = st.file_uploader(
                 "Upload your resume (PDF, DOC, DOCX)",
                 type=["pdf", "doc", "docx"]
