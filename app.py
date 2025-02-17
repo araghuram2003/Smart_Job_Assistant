@@ -171,7 +171,7 @@ Provide a brief overview:
 
     # AI models
     AI_MODELS = {
-        "Google Gemini": "🤖 Google Gemini (High accurate, Sharp and reliable)",
+        "Google Gemini": "🤖 Google Gemini (High accurate and reliable)",
         "Groq": "🤖 Groq (Fast but moderately accurate)"
     }
 
