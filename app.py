@@ -113,13 +113,24 @@ Analyze the resume and provide:
 
     # Analysis types with their prompts
     ANALYSIS_TYPES = {
-        "Complete Analysis": """
-Provide a comprehensive analysis including:
-1. Overall Match Score (%)
-2. Key Skills Match
-3. Experience Alignment
-4. Education Fit
-5. Improvement Suggestions
+        "Complete Analysis": """Analyze my resume against the provided job description(s) and provide a comprehensive evaluation, including:
+1.Overall Match Score (%): Calculate the candidate's overall suitability (%). Explain the weighting of Key Skills, Experience, and Education.
+
+2.Key Skills Match:
+Matching: List proficient skills.
+Potential: List skills needing assessment.
+Missing: List crucial missing skills.
+
+3.Experience Alignment:
+Relevant: Detail correlating experience, quantifying achievements.
+Transferable: Identify applicable skills from other roles.
+Gaps: Note experience gaps.
+
+4.Education Fit:
+Required: State minimum qualifications.
+Candidate's: List degrees, certifications, coursework.
+Gaps: Identify education discrepancies.
+Improvement Suggestions: Offer constructive feedback for strengthening their profile.
         """,
          "ATS Optimization": """
 I need you to act as an expert resume writer and optimization specialist. Your ultimate goal is to create a powerful and highly effective resume for me that excels in all aspects: ATS compatibility, recruiter appeal, and alignment with industry best practices.
@@ -136,25 +147,28 @@ Project descriptions: Advise on how to write concise and compelling project desc
 Technical skills: Ensure my technical skills are prominently displayed and categorized effectively. Suggest ways to showcase proficiency levels (e.g., beginner, intermediate, expert).
 Impactful language: Help me use action verbs and strong language to make my resume more dynamic and engaging.
 
-3.Industry Alignment and Tailoring: Provide recommendations on how to tailor my resume language and structure to align with common industry standards and specific job descriptions (I will provide example job descriptions if needed).  This includes:Keyword matching:Explain how to identify and incorporate relevant keywords from job descriptions.
+3.Industry Alignment and Tailoring: Provide recommendations on how to tailor my resume language and structure to align with common industry standards and specific job descriptions (I will provide example job descriptions if needed).
+This includes:Keyword matching:Explain how to identify and incorporate relevant keywords from job descriptions.
 Industry-specific terminology: Suggest appropriate terminology and jargon to use.
 
 4.Resume length and format: Advise on the ideal length and format for my industry and experience level.
-Rewrite and Formatting: Based on your analysis and recommendations, rewrite my resume to incorporate all the suggested improvements.  Ensure the final version is clean, professional, and easy to read.  Maintain consistent formatting throughout.
         """,
         "Skills Gap Analysis": """
-Focus on skills analysis:
-1. Matching Skills
-2. Missing Critical Skills
-3. Recommended Skills to Add
-4. Skill Level Assessment
+        Provide a concise skills analysis for the candidate, focusing on the following areas:
+1.Matching Skills: List the candidate's skills that directly align with the job requirements, quantifying their proficiency where possible.
+
+2.Missing Critical Skills: List the essential skills required for the role that the candidate lacks, prioritizing them based on their importance to job performance.
+
+3.Recommended Skills to Add: List skills that would significantly enhance the candidate's suitability for the role or their future growth within the company, explaining the rationale behind each recommendation.
+
+4.Skill Level Assessment: Provide a qualitative assessment of the candidate's skill level for each matching skill using terms like Beginner, Intermediate, Proficient, and Expert.
         """,
         "Quick Summary": """
 Provide a brief overview:
-1. Match Percentage
-2. Top 3 Strengths
-3. Top 3 Gaps
-4. Key Recommendations
+1.Match: Overall suitability (%). Weighting of criteria (e.g., skills, experience, education).
+2.Strengths: Top 3, with examples.
+3.Gaps: Top 3, prioritized.
+4.Next Steps: 2-3 recommendations.
         """
     }
 
