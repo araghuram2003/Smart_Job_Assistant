@@ -1360,7 +1360,7 @@ def main():
         )
 
         # Personal Information
-        with st.expander("🔍 Personal Information (Optional)"):
+        with st.expander("🔍Enter Your Personal Information (Optional)"):
             col1, col2 = st.columns(2)
             with col1:
                 name = st.text_input("Your Full Name", placeholder="Your Name")
