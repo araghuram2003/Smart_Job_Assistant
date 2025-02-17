@@ -149,7 +149,6 @@ Focus on skills analysis:
 3. Recommended Skills to Add
 4. Skill Level Assessment
         """,
-       ,
         "Quick Summary": """
 Provide a brief overview:
 1. Match Percentage
