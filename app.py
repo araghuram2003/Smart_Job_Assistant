@@ -177,7 +177,7 @@ Provide a brief overview:
 
     # Cold mail types
     COLD_MAIL_TYPES = {
-        "Professional and Straightforward": {
+        "📑 Professional and Straightforward": {
             "description": "A formal and direct approach, ideal for traditional industries and corporate settings",
             "template": """
 Subject: Seeking Internship Opportunity to Learn and Contribute
@@ -199,7 +199,7 @@ Warm regards,
 [LinkedIn Profile link or Portfolio]
             """
         },
-        "Friendly Yet Professional": {
+        "🤝 Friendly Yet Professional": {
             "description": "A balanced approach combining warmth with professionalism, suitable for modern companies and startups",
             "template": """
 Subject: Excited to Learn and Contribute - Internship Inquiry
@@ -221,7 +221,7 @@ Best regards,
 [LinkedIn Profile Link or Portfolio]
             """
         },
-        "Enthusiastic and Curious": {
+        "🌟 Enthusiastic and Curious": {
             "description": "An energetic approach emphasizing eagerness to learn and contribute, great for innovation-focused companies",
             "template": """
 Subject: Internship Inquiry: Eager to Learn and Make an Impact
