@@ -1249,7 +1249,7 @@ def main():
         # Futuristic Header for Resume Analyzer
         st.markdown('''
             <div class="cyber-card" style="text-align: center; padding: 2rem; margin-bottom: 2rem;">
-                <h1 class="title-glow">📊 SMART RESUME ANALYZER</h1>
+                <h1 class="title-glow">📄 SMART RESUME ANALYZER</h1>
                 <p style="color: #0066cc; text-transform: uppercase; letter-spacing: 2px;">
                     🎯 Smart Analysis • 🔍 Deep Insights • ⚡ Quick Results
                 </p>
