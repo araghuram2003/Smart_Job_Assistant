@@ -9,9 +9,7 @@ st.set_page_config(
     menu_items={
         'Get Help': 'https://www.example.com/help',
         'Report a bug': "https://www.example.com/bug",
-        'About': "# Smart Job Assistant\nPowered by Advanced AI 🚀"
-    }
-)
+        'About': "# Smart Job Assistant\nPowered by Gen AI 🚀"})
 
 import os
 from dotenv import load_dotenv
@@ -92,8 +90,7 @@ Analyze the resume and provide:
                 "job_desc": "नौकरी का विवरण",
                 "analyze": "रिज्यूमे का विश्लेषण करें",
                 "results": "विश्लेषण परिणाम"
-            }
-        },
+            }},
         "తెలుగు": {
             "resume_analysis": """
 రెస్యూమ్ విశ్లేషణ చేసి ఈ క్రింది వాటిని అందించండి:
@@ -107,9 +104,7 @@ Analyze the resume and provide:
                 "job_desc": "ఉద్యోగ వివరణ",
                 "analyze": "రెస్యూమ్ విశ్లేషించండి",
                 "results": "విశ్లేషణ ఫలితాలు"
-            }
-        }
-    }
+            }}}
 
     # Analysis types with their prompts
     ANALYSIS_TYPES = {
@@ -166,14 +161,10 @@ Provide a brief overview:
 2.Strengths: Top 3, with examples.
 3.Gaps: Top 3, prioritized.
 4.Next Steps: 2-3 recommendations.
-        """
-    }
+        """}
 
     # AI models
-    AI_MODELS = {
-        "Google Gemini": "🤖 Google Gemini (High accurate and reliable)",
-        "Groq": "🤖 Groq (Fast but moderately accurate)"
-    }
+    AI_MODELS = {"Google Gemini": "🤖 Google Gemini (High accurate and reliable)","Groq": "🤖 Groq (Fast but moderately accurate)"}
 
     # Cold mail types
     COLD_MAIL_TYPES = {
@@ -241,9 +232,7 @@ Best regards,
 [Your Phone Number]
 [Your Email Address]
 [LinkedIn Profile Link or Portfolio]
-            """
-        }
-    }
+            """}}
 
     @staticmethod
     def get_prompts(language="English"):
@@ -258,8 +247,7 @@ Best regards,
                 4. Improvement Suggestions""",
                 "user_msg": """Please analyze this resume against the job description in English.
                 Ensure you follow the exact format mentioned above.""",
-                "result_prefix": "Analysis Results:\n\n"
-            },
+                "result_prefix": "Analysis Results:\n\n"},
             "हिंदी": {
                 "system_msg": """आप एक पेशेवर रिज्यूमे विश्लेषक हैं। आपका काम रिज्यूमे का विश्लेषण हिंदी में करना है।
                 कृपया अपना जवाब इस प्रारूप में दें:
@@ -269,8 +257,7 @@ Best regards,
                 4. सुधार के सुझाव""",
                 "user_msg": """कृपया इस रिज्यूमे का विश्लेषण नौकरी के विवरण के अनुसार हिंदी में करें।
                 कृपया ऊपर दिए गए प्रारूप का पालन करें।""",
-                "result_prefix": "विश्लेषण परिणाम:\n\n"
-            },
+                "result_prefix": "विश्लेषण परिणाम:\n\n"},
             "తెలుగు": {
                 "system_msg": """మీరు ఒక వృత్తిపరమైన రెస్యూమ్ విశ్లేషకులు. మీ పని రెస్యూమ్‌ని తెలుగులో విశ్లేషించడం.
                 దయచేసి మీ సమాధానాన్ని ఈ ఫార్మాట్‌లో ఇవ్వండి:
@@ -280,9 +267,7 @@ Best regards,
                 4. మెరుగుదల సూచనలు""",
                 "user_msg": """దయచేసి ఈ రెస్యూమ్‌ని ఉద్యోగ వివరణతో పోల్చి తెలుగులో విశ్లేషించండి.
                 పైన పేర్కొన్న ఫార్మాట్‌ని ఖచ్చితంగా పాటించండి.""",
-                "result_prefix": "విశ్లేషణ ఫలితాలు:\n\n"
-            }
-        }
+                "result_prefix": "విశ్లేషణ ఫలితాలు:\n\n"}}
         return prompts.get(language, prompts["English"])
 
     @staticmethod
@@ -291,21 +276,13 @@ Best regards,
         error_messages = {
             "English": "Error in analysis. Please try again or contact support.",
             "हिंदी": "विश्लेषण में त्रुटि हुई। कृपया पुनः प्रयास करें या सहायता से संपर्क करें।",
-            "తెలుగు": "విశ్లేషణలో లోపం. దయచేసి మళ్లీ ప్రయత్నించండి లేదా సహాయం కోసం సంప్రదించండి."
-        }
+            "తెలుగు": "విశ్లేషణలో లోపం. దయచేసి మళ్లీ ప్రయత్నించండి లేదా సహాయం కోసం సంప్రదించండి."}
         return error_messages.get(language, error_messages["English"])
 
     @staticmethod
     def format_groq_messages(selected_lang, input_prompt, job_description, pdf_text, language):
         """Format messages for Groq API"""
-        return [
-            {
-                "role": "system",
-                "content": selected_lang["system_msg"]
-            },
-            {
-                "role": "user",
-                "content": f"""{selected_lang["user_msg"]}
+        return [{"role": "system","content": selected_lang["system_msg"]},{"role": "user","content": f"""{selected_lang["user_msg"]}
 
 Analysis Requirements:
 {input_prompt}
@@ -320,9 +297,7 @@ Remember to:
 1. Keep the analysis in {language}
 2. Follow the exact format specified
 3. Provide clear, actionable feedback
-4. Include a numerical match score"""
-            }
-        ]
+4. Include a numerical match score"""}]
 
     @staticmethod
     def get_ai_response(model_choice, input_prompt, pdf_text, job_description, language="English"):
@@ -338,9 +313,7 @@ Remember to:
                 st.error("⚠️ Groq AI is not available. Please use Google Gemini instead.")
                 return ATSAnalyzer.get_gemini_response(input_prompt, pdf_text, job_description, language)
                 
-            messages = ATSAnalyzer.format_groq_messages(
-                selected_lang, input_prompt, job_description, pdf_text, language
-            )
+            messages = ATSAnalyzer.format_groq_messages(selected_lang, input_prompt, job_description, pdf_text, language)
 
             # Using Mixtral model with optimized parameters
             chat_completion = groq_client.chat.completions.create(
@@ -350,8 +323,7 @@ Remember to:
                 max_tokens=4000,
                 top_p=1,
                 frequency_penalty=0,
-                presence_penalty=0
-            )
+                presence_penalty=0)
             
             response = chat_completion.choices[0].message.content
             if not response or len(response.strip()) < 10:
@@ -403,10 +375,7 @@ Remember to:
             match_result = re.search(match_pattern, response)
             match_score = float(match_result.group(1)) if match_result else 0
 
-            return {
-                'match_score': match_score,
-                'raw_response': response
-            }
+            return {'match_score': match_score,'raw_response': response}
         except Exception as e:
             logger.error(f"Error parsing response: {str(e)}")
             return None
@@ -1143,13 +1112,8 @@ def main():
         }
 
         @keyframes loading {
-            0% {
-                background-position: 200% 200%;
-            }
-            100% {
-                background-position: 0 0;
-            }
-        }
+            0% {background-position: 200% 200%;}
+            100% {background-position: 0 0;}}
 
         /* Cyber border effect */
         .stButton > button[kind="primary"]::after {
@@ -1159,17 +1123,14 @@ def main():
             background: linear-gradient(45deg,
                 var(--neon-blue),
                 #60a5fa,
-                var(--neon-blue)
-            );
+                var(--neon-blue));
             filter: blur(5px);
             z-index: -1;
-            animation: borderGlow 3s infinite;
-        }
+            animation: borderGlow 3s infinite;}
 
         @keyframes borderGlow {
             0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
+            50% { opacity: 0.5; }}
         </style>
     """, unsafe_allow_html=True)
 
@@ -1188,8 +1149,7 @@ def main():
         page = st.radio(
             "NAVIGATE",
             ["Smart Resume Analyzer", "Smart Cold Mail Generator"],
-            format_func=lambda x: f"📄 {x}" if x == "Smart Resume Analyzer" else f"✉️ {x}"
-        )
+            format_func=lambda x: f"📄 {x}" if x == "Smart Resume Analyzer" else f"✉️ {x}")
         
         # Language selector only for Resume Analyzer
         selected_language = "English"  # Default language for Cold Mail
@@ -1200,18 +1160,12 @@ def main():
                 [
                     "🇺🇸 English",
                     "🇮🇳 हिंदी",
-                    "🇮🇳 తెలుగు"
-                ],
+                    "🇮🇳 తెలుగు"],
                 index=0,
-                help="Choose your preferred language for analysis"
-            )
+                help="Choose your preferred language for analysis")
 
             # Update language mapping
-            language_mapping = {
-                "🇺🇸 English": "English",
-                "🇮🇳 हिंदी": "हिंदी",
-                "🇮🇳 తెలుగు": "తెలుగు"
-            }
+            language_mapping = {"🇺🇸 English": "English","🇮🇳 हिंदी": "हिंदी","🇮🇳 తెలుగు": "తెలుగు"}
             
             # Get the actual language key for prompts
             selected_language = language_mapping[language]
@@ -1219,28 +1173,22 @@ def main():
         if page == "Smart Resume Analyzer": 
             st.markdown("<p style='color: #0066cc; margin-top: 20px;'>Choose your preferred Analysis Type</p>", unsafe_allow_html=True)
             # Analysis type selector with cool badges
-            analysis_types = st.multiselect(
-                "SELECT ANALYSIS MODULES",
+            analysis_types = st.multiselect("SELECT ANALYSIS MODULES",
                 list(ATSAnalyzer.ANALYSIS_TYPES.keys()),
                 default=["Complete Analysis"],
-                format_func=lambda x: f"{'🔍' if 'Complete' in x else '🎯' if 'Skills' in x else '🤖' if 'ATS' in x else '📊'} {x}"
-            )
+                format_func=lambda x: f"{'🔍' if 'Complete' in x else '🎯' if 'Skills' in x else '🤖' if 'ATS' in x else '📊'} {x}")
             
             # Model selection with tech badges
-            model_choice = st.selectbox(
-                "SELECT AI MODEL",
+            model_choice = st.selectbox("SELECT AI MODEL",
                 list(ATSAnalyzer.AI_MODELS.keys()),
-                format_func=lambda x: ATSAnalyzer.AI_MODELS[x]
-            )
+                format_func=lambda x: ATSAnalyzer.AI_MODELS[x])
         else:
             st.markdown("<p style='color: #0066cc; margin-top: 20px;'>Choose your preferred AI MODEL</p>", unsafe_allow_html=True)
             
             # Model selection for cold mail
-            model_choice = st.selectbox(
-                "SELECT AI MODEL",
+            model_choice = st.selectbox("SELECT AI MODEL",
                 list(ATSAnalyzer.AI_MODELS.keys()),
-                format_func=lambda x: ATSAnalyzer.AI_MODELS[x]
-            )
+                format_func=lambda x: ATSAnalyzer.AI_MODELS[x])
 
     # Get language-specific labels
     labels = ATSAnalyzer.LANGUAGE_PROMPTS[selected_language]["labels"] if page == "Smart Resume Analyzer" else ATSAnalyzer.LANGUAGE_PROMPTS["English"]["labels"]
@@ -1262,18 +1210,14 @@ def main():
         with col1:
             st.subheader("📝 Job Description")
             job_title = st.text_input("Job Title", placeholder="e.g., Software Engineer (optional)")
-            job_description = st.text_area(
-                "Job Description",
+            job_description = st.text_area("Job Description",
                 height=200,
-                placeholder="Paste the job description here..."
-            )
+                placeholder="Paste the job description here...")
 
         with col2:
             st.subheader("📄 Your Resume")
-            uploaded_file = st.file_uploader(
-                "Upload your resume (PDF, DOC, DOCX)",
-                type=["pdf", "doc", "docx"]
-            )
+            uploaded_file = st.file_uploader("Upload your resume (PDF, DOC, DOCX)",
+                type=["pdf", "doc", "docx"])
 
             if uploaded_file:
                 st.markdown(f'<p class="success-message">✅ {uploaded_file.name} uploaded successfully!</p>', unsafe_allow_html=True)
@@ -1290,13 +1234,7 @@ def main():
                             analysis_prompt = ATSAnalyzer.ANALYSIS_TYPES[analysis_type]
                             
                             # Get response
-                            response = ATSAnalyzer.get_ai_response(
-                                model_choice,
-                                analysis_prompt,
-                                doc_text,
-                                job_description,
-                                selected_language
-                            )
+                            response = ATSAnalyzer.get_ai_response(model_choice,analysis_prompt,doc_text,job_description,selected_language)
                             
                             if response:
                                 # Use the class method instead of global function
@@ -1309,12 +1247,10 @@ def main():
                                     st.markdown(response)
                     
                     # Download button for complete analysis
-                    st.download_button(
-                        "📥 Download Complete Analysis",
+                    st.download_button("📥 Download Complete Analysis",
                         "\n\n".join([f"=== {at} ===\n{ATSAnalyzer.get_ai_response(model_choice, ATSAnalyzer.ANALYSIS_TYPES[at], doc_text, job_description, selected_language)}" for at in analysis_types]),
                         file_name=f"resume_analysis_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt",
-                        mime="text/plain"
-                    )
+                        mime="text/plain")
 
     else:
         # Futuristic Header for Cold Mail Generator
@@ -1324,8 +1260,7 @@ def main():
                 <p style="color: #0066cc; text-transform: uppercase; letter-spacing: 2px;">
                     💼 Professional • 🎯 Targeted • ✨ Impactful
                 </p>
-            </div>
-        ''', unsafe_allow_html=True)
+            </div>''', unsafe_allow_html=True)
         
         # Create two columns for inputs
         col1, col2 = st.columns(2)
@@ -1336,28 +1271,23 @@ def main():
             job_description = st.text_area(
                 "Paste the job description here",
                 height=300,
-                help="Paste the complete job description to generate a tailored cold mail"
-            )
+                help="Paste the complete job description to generate a tailored cold mail")
         
         with col2:
             # Resume Upload
             st.markdown("### 📄 Your Resume")
-            uploaded_resume = st.file_uploader(
-                "Upload your resume",
+            uploaded_resume = st.file_uploader("Upload your resume",
                 type=["pdf", "doc", "docx"],
-                help="Upload your resume to personalize the cold mail"
-            )
+                help="Upload your resume to personalize the cold mail")
             
             if uploaded_resume:
                 st.success(f"✅ Resume uploaded: {uploaded_resume.name}")
         
         # Cold Mail Type Selection with descriptions
         st.markdown("### 📋 Select Cold Mail Style")
-        cold_mail_type = st.selectbox(
-            "Choose your preferred style",
+        cold_mail_type = st.selectbox("Choose your preferred style",
             list(ATSAnalyzer.COLD_MAIL_TYPES.keys()),
-            format_func=lambda x: f"{x} - {ATSAnalyzer.COLD_MAIL_TYPES[x]['description']}"
-        )
+            format_func=lambda x: f"{x} - {ATSAnalyzer.COLD_MAIL_TYPES[x]['description']}")
 
         # Personal Information
         with st.expander("✍🏽Enter Your Personal Information (Optional)"):
@@ -1388,15 +1318,12 @@ def main():
                             prompt=template,
                             resume_text=doc_text,
                             job_description=job_description,
-                            personal_info={
-                                "name": name,
+                            personal_info={"name": name,
                                 "email": email,
                                 "phone": phone,
                                 "university": university,
                                 "linkedin": linkedin,
-                                "degree": degree
-                            }
-                        )
+                                "degree": degree})
                         
                         if cold_mail:
                             st.markdown("### 📧 Your Generated Cold Mail")
@@ -1410,18 +1337,15 @@ def main():
                             current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
                             filename = f"cold_mail_{current_time}.txt"
                             
-                            st.download_button(
-                                label="💾 Download Cold Mail",
+                            st.download_button(label="💾 Download Cold Mail",
                                 data=cold_mail,
                                 file_name=filename,
                                 mime="text/plain",
-                                use_container_width=True
-                            )
+                                use_container_width=True)
         
     # Footer with futuristic style
     st.markdown("---")
-    st.markdown(
-        """
+    st.markdown("""
         <div style='text-align: center; padding: 1rem;'>
             <div style='color: #0066cc; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px;'>
                 ⚠️ AI can make mistakes.Please Double Check the Response
@@ -1431,8 +1355,7 @@ def main():
             </div>
         </div>
         """,
-        unsafe_allow_html=True
-    )
+        unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
