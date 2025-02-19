@@ -1,6 +1,6 @@
 import streamlit as st
 
-# Must be the first Streamlit command
+# Title for the website "💼 Smart Job Assistant"
 st.set_page_config(
     page_title="Smart Job Assistant",
     page_icon="💼",
@@ -10,7 +10,7 @@ st.set_page_config(
         'Get Help': 'https://www.example.com/help',
         'Report a bug': "https://www.example.com/bug",
         'About': "# Smart Job Assistant\nPowered by Gen AI 🚀"})
-
+# Packages 
 import os
 from dotenv import load_dotenv
 from PyPDF2 import PdfReader
@@ -166,7 +166,7 @@ Provide a brief overview:
     # AI models
     AI_MODELS = {"Google Gemini": "🤖 Google Gemini (High accurate and reliable)","Groq": "🤖 Groq (Fast but moderately accurate)"}
 
-    # Cold mail types
+    # Cold mail 
     COLD_MAIL_TYPES = {
         "📑 Professional and Straightforward": {
             "description": "A formal and direct approach, ideal for traditional industries and corporate settings",
