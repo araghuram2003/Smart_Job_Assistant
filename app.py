@@ -397,14 +397,9 @@ Remember to:
                 else:
                     chat_completion = groq_client.chat.completions.create(
                         messages=[
-                            {
-                                "role": "user",
-                                "content": f"{prompt}\n\nResume:\n{resume_text}\n\nJob Description:\n{job_description}"
-                            }
-                        ],
+                            {"role": "user","content": f"{prompt}\n\nResume:\n{resume_text}\n\nJob Description:\n{job_description}"}],
                         model="mixtral-8x7b-32768",
-                        temperature=0.5,
-                    )
+                        temperature=0.5,)
                     generated_content = chat_completion.choices[0].message.content
 
             # Replace basic placeholders with personal information
@@ -1146,22 +1141,15 @@ def main():
         """, unsafe_allow_html=True)
         
         # Page Selection with cool icons
-        page = st.radio(
-            "NAVIGATE",
-            ["Smart Resume Analyzer", "Smart Cold Mail Generator"],
+        page = st.radio("NAVIGATE",["Smart Resume Analyzer", "Smart Cold Mail Generator"],
             format_func=lambda x: f"📄 {x}" if x == "Smart Resume Analyzer" else f"✉️ {x}")
         
         # Language selector only for Resume Analyzer
         selected_language = "English"  # Default language for Cold Mail
         if page == "Smart Resume Analyzer":
             # Language selector with modern flags
-            language = st.selectbox(
-                "🌐 Select Language",
-                [
-                    "🇺🇸 English",
-                    "🇮🇳 हिंदी",
-                    "🇮🇳 తెలుగు"],
-                index=0,
+            language = st.selectbox("🌐 Select Language",
+                ["🇺🇸 English","🇮🇳 हिंदी","🇮🇳 తెలుగు"],index=0,
                 help="Choose your preferred language for analysis")
 
             # Update language mapping
