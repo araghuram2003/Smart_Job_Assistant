@@ -1196,7 +1196,7 @@ def main():
         col1, col2 = st.columns([1, 1])
 
         with col1:
-            st.subheader("📝 Job Description")
+            st.subheader("📝 Job Description Details")
             job_title = st.text_input("Job Title (Optional)", placeholder="e.g., Software Engineer (Optional)")
             job_description = st.text_area("Job Description",
                 height=200,
@@ -1255,9 +1255,9 @@ def main():
         
         with col1:
             # Job Description Input
-            st.subheader("📝 Job Description")
+            st.subheader("📝 Job Description Detail")
             job_description = st.text_area(
-                "Paste the job description",
+                "Job description",
                 height=300,
                 placeholder="Paste the complete job description to generate a tailored cold mail..."
             )
