@@ -1260,7 +1260,7 @@ def main():
             job_description = st.text_area(
                 "Paste the job description",
                 height=300,
-                placeholder="Paste the complete job description to generate a tailored cold mail..."
+                help="Paste the complete job description to generate a tailored cold mail..."
             )
         
         with col2:
