@@ -1197,7 +1197,7 @@ def main():
 
         with col1:
             st.subheader("📝 Job Description Details")
-            job_title = st.text_input("Job Title (Optional)", placeholder="e.g., Software Engineer (Optional)")
+            job_title = st.text_input("Job Title (Optional)", placeholder="e.g., Software Engineer")
             job_description = st.text_area("Job Description",
                 height=200,
                 placeholder="Paste the job description here...")
