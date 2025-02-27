@@ -1258,7 +1258,7 @@ def main():
             st.markdown("### 📝 Job Description")
             job_description = st.text_area(
                 "Paste the job description here",
-                height=300,
+                height=200,
                 placeholder=("Paste the complete job description to generate a tailored cold mail")
         
         with col2:
