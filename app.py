@@ -1255,10 +1255,11 @@ def main():
         
         with col1:
             # Job Description Input
-             st.subheader("### 📝 Job Description")
-             job_description = st.text_area("Job Description",
+            st.subheader("📝 Job Description Detials")
+            job_description = st.text_area(
+                "Paste the job description here",
                 height=200,
-                placeholder="Paste the complete job description to generate a tailored cold mail")
+                placeholder=("Paste the complete job description to generate a tailored cold mail")
         
         with col2:
             # Resume Upload
