@@ -350,12 +350,12 @@ Remember to:
                         # Fall back to original format as last resort
                                  model = genai.GenerativeModel("gemini-pro")
             
-            prompt = f"Analyze in {language}. {input_prompt}"
-            response = model.generate_content([prompt, pdf_text, job_description])
-            return response.text
-        except Exception as e:
-            st.error(f"Error generating response: {str(e)}")
-            return None
+                        prompt = f"Analyze in {language}. {input_prompt}"
+                        response = model.generate_content([prompt, pdf_text, job_description])
+                        return response.text
+                    except Exception as e:
+                        st.error(f"Error generating response: {str(e)}")
+                        return None
 
     @staticmethod
     def extract_text(uploaded_file):
