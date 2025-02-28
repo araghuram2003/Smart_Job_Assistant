@@ -395,7 +395,6 @@ Remember to:
         """Generate a cold mail using the selected AI model"""
         try:
             if model_choice == "Google Gemini":
-                model = genai.GenerativeModel("gemini-pro"):
                 try:
                     model = genai.GenerativeModel("gemini-1.5-pro")
                 except Exception as e1:
