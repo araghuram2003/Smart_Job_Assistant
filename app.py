@@ -442,7 +442,7 @@ Remember to:
             generated_content = generated_content.replace("[LinkedIn Profile or Portfolio link]", personal_info.get("linkedin", "[Your LinkedIn]"))
             generated_content = generated_content.replace("[Your Degree]", personal_info.get("degree", "[Your Degree]"))
 
-          return generated_content
+            return generated_content
 
 except Exception as e:
     logger.error(f"Error generating cold mail: {str(e)}")
