@@ -444,9 +444,9 @@ Remember to:
 
             return generated_content
 
-except Exception as e:
-    logger.error(f"Error generating cold mail: {str(e)}")
-    return None
+        except Exception as e:
+            logger.error(f"Error generating cold mail: {str(e)}")
+            return None
 
 def main():
     # Theme configuration
