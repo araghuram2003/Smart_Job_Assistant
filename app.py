@@ -424,8 +424,8 @@ Remember to:
                             # Fall back to original format as last resort
                                 model = genai.GenerativeModel("gemini-pro")
                             
-                response = model.generate_content([prompt, resume_text, job_description])
-                generated_content = response.text
+                    response = model.generate_content([prompt, resume_text, job_description])
+                    generated_content = response.text
                 else: 
                     chat_completion = groq_client.chat.completions.create(
                         messages=[
@@ -435,12 +435,12 @@ Remember to:
                     generated_content = chat_completion.choices[0].message.content
 
             # Replace basic placeholders with personal information
-          generated_content = generated_content.replace("[Your Name]", personal_info.get("name", "[Your Name]"))
-          generated_content = generated_content.replace("[Your Email Address]", personal_info.get("email", "[Your Email]"))
-          generated_content = generated_content.replace("[Your Phone Number]", personal_info.get("phone", "[Your Phone]"))
-          generated_content = generated_content.replace("[Your College/University Name]", personal_info.get("university", "[Your University]"))
-          generated_content = generated_content.replace("[LinkedIn Profile or Portfolio link]", personal_info.get("linkedin", "[Your LinkedIn]"))
-          generated_content = generated_content.replace("[Your Degree]", personal_info.get("degree", "[Your Degree]"))
+            generated_content = generated_content.replace("[Your Name]", personal_info.get("name", "[Your Name]"))
+            generated_content = generated_content.replace("[Your Email Address]", personal_info.get("email", "[Your Email]"))
+            generated_content = generated_content.replace("[Your Phone Number]", personal_info.get("phone", "[Your Phone]"))
+            generated_content = generated_content.replace("[Your College/University Name]", personal_info.get("university", "[Your University]"))
+            generated_content = generated_content.replace("[LinkedIn Profile or Portfolio link]", personal_info.get("linkedin", "[Your LinkedIn]"))
+            generated_content = generated_content.replace("[Your Degree]", personal_info.get("degree", "[Your Degree]"))
 
           return generated_content
 
