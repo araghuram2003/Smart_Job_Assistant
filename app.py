@@ -426,13 +426,13 @@ Remember to:
                             
                 response = model.generate_content([prompt, resume_text, job_description])
                 generated_content = response.text
-              else:
-                  chat_completion = groq_client.chat.completions.create(
-                      messages=[
+            else: 
+                chat_completion = groq_client.chat.completions.create(
+                    messages=[
                         {"role": "user","content": f"{prompt}\n\nResume:\n{resume_text}\n\nJob Description:\n{job_description}"}],
-                      model="mixtral-8x7b-32768",
-                      temperature=0.5,)
-                  generated_content = chat_completion.choices[0].message.content
+                    model="mixtral-8x7b-32768",
+                    temperature=0.5,)
+                generated_content = chat_completion.choices[0].message.content
 
             # Replace basic placeholders with personal information
           generated_content = generated_content.replace("[Your Name]", personal_info.get("name", "[Your Name]"))
