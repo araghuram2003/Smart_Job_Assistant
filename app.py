@@ -426,8 +426,6 @@ Remember to:
                             
                 response = model.generate_content([prompt, resume_text, job_description])
                 generated_content = response.text
-                    response = model.generate_content([prompt, resume_text, job_description])
-                    generated_content = response.text
                 else:
                     chat_completion = groq_client.chat.completions.create(
                         messages=[
