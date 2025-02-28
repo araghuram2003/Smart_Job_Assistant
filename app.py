@@ -339,16 +339,16 @@ Remember to:
     @staticmethod
     def get_gemini_response(input_prompt, pdf_text, job_description, language="English"):
                     try:
-                model = genai.GenerativeModel("gemini-1.5-pro")
-            except Exception as e1:
-                try:
-                    model = genai.GenerativeModel("models/gemini-1.5-pro")
-                except Exception as e2:
-                    try:
-                        model = genai.GenerativeModel("models/gemini-pro")
-                    except Exception as e3:
+                        model = genai.GenerativeModel("gemini-1.5-pro")
+                    except Exception as e1:
+                        try:
+                            model = genai.GenerativeModel("models/gemini-1.5-pro")
+                        except Exception as e2:
+                            try:
+                                model = genai.GenerativeModel("models/gemini-pro")
+                            except Exception as e3:
                         # Fall back to original format as last resort
-                        model = genai.GenerativeModel("gemini-pro")
+                                 model = genai.GenerativeModel("gemini-pro")
             
             prompt = f"Analyze in {language}. {input_prompt}"
             response = model.generate_content([prompt, pdf_text, job_description])
