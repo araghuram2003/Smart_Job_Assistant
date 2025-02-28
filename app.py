@@ -395,13 +395,38 @@ Remember to:
         """Generate a cold mail using the selected AI model"""
         try:
             if model_choice == "Google Gemini":
-                model = genai.GenerativeModel("gemini-pro")
+                model = genai.GenerativeModel("gemini-pro"):
+                try:
+                    model = genai.GenerativeModel("gemini-1.5-pro")
+                except Exception as e1:
+                    try:
+                        model = genai.GenerativeModel("models/gemini-1.5-pro")
+                    except Exception as e2:
+                        try:
+                            model = genai.GenerativeModel("models/gemini-pro")
+                        except Exception as e3:
+                            # Fall back to original format as last resort
+                            model = genai.GenerativeModel("gemini-pro")
+                            
                 response = model.generate_content([prompt, resume_text, job_description])
                 generated_content = response.text
             else:
                 if groq_client is None:
                     st.error("⚠️ Groq AI is not available. Please use Google Gemini instead.")
-                    model = genai.GenerativeModel("gemini-pro")
+                    try:
+                        model = genai.GenerativeModel("gemini-1.5-pro")
+                    except Exception as e1:
+                        try:
+                            model = genai.GenerativeModel("models/gemini-1.5-pro")
+                        except Exception as e2:
+                            try:
+                                model = genai.GenerativeModel("models/gemini-pro")
+                            except Exception as e3:
+                            # Fall back to original format as last resort
+                                model = genai.GenerativeModel("gemini-pro")
+                            
+                response = model.generate_content([prompt, resume_text, job_description])
+                generated_content = response.text
                     response = model.generate_content([prompt, resume_text, job_description])
                     generated_content = response.text
                 else:
