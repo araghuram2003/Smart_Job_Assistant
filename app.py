@@ -355,7 +355,7 @@ Remember to:
                                 model = genai.GenerativeModel("models/gemini-1.5-pro")
                                 logger.debug("Successfully initialized models/gemini-1.5-pro model")
                             except Exception as e2:
-                            logger.debug(f"Failed with models/gemini-1.5-pro: {str(e2)}")
+                                logger.debug(f"Failed with models/gemini-1.5-pro: {str(e2)}")
                                 try:
                                     logger.debug("Attempting to initialize Gemini model with models/gemini-pro")
                                     model = genai.GenerativeModel("models/gemini-pro")
