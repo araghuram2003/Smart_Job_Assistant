@@ -367,35 +367,34 @@ Remember to:
                                     model = genai.GenerativeModel("gemini-pro")
                                     logger.debug("Successfully initialized gemini-pro model")
                         try:
-                            # Construct a more structured prompt
-                full_prompt = f"""
-Task: {input_prompt}
+                            full_prompt = f"""
+            Task: {input_prompt}
 
-Language: {language}
+            Language: {language}
 
-Resume Content:
-{pdf_text}
+            Resume Content:
+            {pdf_text}
 
-Job Description:
-{job_description}
+            Job Description:
+            {job_description}
 
-Please provide a detailed analysis based on the above information.
-"""
-                logger.debug(f"Sending request to Gemini API with prompt length: {len(full_prompt)}")
+            Please provide a detailed analysis based on the above information.
+            """
+                            logger.debug(f"Sending request to Gemini API with prompt length: {len(full_prompt)}")
                 
-                # Use a single content string instead of a list
-                response = model.generate_content(full_prompt)
+                            # Use a single content string instead of a list
+                            response = model.generate_content(full_prompt)
                 
-                logger.debug("Successfully received response from Gemini API")
-                return response.text
-            except Exception as e:
-                logger.error(f"Error generating Gemini response: {str(e)}")
-                st.error(f"Error generating response: {str(e)}")
-                return None
-        except Exception as outer_e:
-            logger.error(f"Unexpected error in get_gemini_response: {str(outer_e)}")
-            st.error(f"Unexpected error: {str(outer_e)}")
-            return None
+                            logger.debug("Successfully received response from Gemini API")
+                            return response.text
+                        except Exception as e:
+                            logger.error(f"Error generating Gemini response: {str(e)}")
+                            st.error(f"Error generating response: {str(e)}")
+                            return None
+                    except Exception as outer_e:
+                        logger.error(f"Unexpected error in get_gemini_response: {str(outer_e)}")
+                        st.error(f"Unexpected error: {str(outer_e)}")
+                        return None
 
                             
 
