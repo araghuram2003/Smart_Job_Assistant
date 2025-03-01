@@ -339,23 +339,65 @@ Remember to:
     @staticmethod
     def get_gemini_response(input_prompt, pdf_text, job_description, language="English"):
                     try:
-                        model = genai.GenerativeModel("gemini-1.5-pro")
-                    except Exception as e1:
+                        if not pdf_text or not job_description:
+                            logger.error("Empty resume text or job description")
+                            st.error("⚠️ Resume text or job description is empty. Please check your inputs.")
+                            return None
+                            
+                        logger.debug("Attempting to initialize Gemini model with gemini-1.5-pro")
                         try:
-                            model = genai.GenerativeModel("models/gemini-1.5-pro")
-                        except Exception as e2:
+                            model = genai.GenerativeModel("gemini-1.5-pro")
+                            logger.debug("Successfully initialized gemini-1.5-pro model")
+                        except Exception as e1:
+                            logger.debug(f"Failed with gemini-1.5-pro: {str(e1)}")
                             try:
+                                logger.debug("Attempting to initialize Gemini model with models/gemini-1.5-pro")
+                                model = genai.GenerativeModel("models/gemini-1.5-pro")
+                                logger.debug("Successfully initialized models/gemini-1.5-pro model")
+                        except Exception as e2:
+                            logger.debug(f"Failed with models/gemini-1.5-pro: {str(e2)}")
+                            try:
+                                logger.debug("Attempting to initialize Gemini model with models/gemini-pro")
                                 model = genai.GenerativeModel("models/gemini-pro")
+                                logger.debug("Successfully initialized models/gemini-pro model")
                             except Exception as e3:
+                                logger.debug(f"Failed with models/gemini-pro: {str(e3)}")
                         # Fall back to original format as last resort
-                                 model = genai.GenerativeModel("gemini-pro")
-            
-                        prompt = f"Analyze in {language}. {input_prompt}"
-                        response = model.generate_content([prompt, pdf_text, job_description])
-                        return response.text
-                    except Exception as e:
-                        st.error(f"Error generating response: {str(e)}")
-                        return None
+                                logger.debug("Falling back to gemini-pro")
+                                model = genai.GenerativeModel("gemini-pro")
+                                logger.debug("Successfully initialized gemini-pro model")
+                        try:
+                            # Construct a more structured prompt
+                full_prompt = f"""
+Task: {input_prompt}
+
+Language: {language}
+
+Resume Content:
+{pdf_text}
+
+Job Description:
+{job_description}
+
+Please provide a detailed analysis based on the above information.
+"""
+                logger.debug(f"Sending request to Gemini API with prompt length: {len(full_prompt)}")
+                
+                # Use a single content string instead of a list
+                response = model.generate_content(full_prompt)
+                
+                logger.debug("Successfully received response from Gemini API")
+                return response.text
+            except Exception as e:
+                logger.error(f"Error generating Gemini response: {str(e)}")
+                st.error(f"Error generating response: {str(e)}")
+                return None
+        except Exception as outer_e:
+            logger.error(f"Unexpected error in get_gemini_response: {str(outer_e)}")
+            st.error(f"Unexpected error: {str(outer_e)}")
+            return None
+
+                            
 
     @staticmethod
     def extract_text(uploaded_file):
