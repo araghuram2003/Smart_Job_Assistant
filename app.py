@@ -1,6 +1,6 @@
 import streamlit as st
 
-# Title for the website "💼 Smart Job Assistant"
+# Theme configuration
 st.set_page_config(
     page_title="Smart Job Assistant",
     page_icon="💼",
@@ -9,7 +9,8 @@ st.set_page_config(
     menu_items={
         'Get Help': 'https://www.example.com/help',
         'Report a bug': "https://www.example.com/bug",
-        'About': "# Smart Job Assistant\nPowered by Gen AI 🚀"})
+        'About': "# Smart Job Assistant\nPowered by Gen AI 🚀"
+    },
     theme={
         "base": "dark",
         "primaryColor": "#0321cb",
