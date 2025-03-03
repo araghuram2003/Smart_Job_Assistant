@@ -10,14 +10,6 @@ st.set_page_config(
         'Get Help': 'https://www.example.com/help',
         'Report a bug': "https://www.example.com/bug",
         'About': "# Smart Job Assistant\nPowered by Gen AI 🚀"
-    },
-    theme={
-        "base": "dark",
-        "primaryColor": "#0321cb",
-        "backgroundColor": "#0c1027",
-        "secondaryBackgroundColor": "#0c1129"
-    }
-)
 
 # Packages 
 import os
