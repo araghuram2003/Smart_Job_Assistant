@@ -10,6 +10,30 @@ st.set_page_config(
         'Get Help': 'https://www.example.com/help',
         'Report a bug': "https://www.example.com/bug",
         'About': "# Smart Job Assistant\nPowered by Gen AI 🚀"})
+To add the provided Streamlit theme configuration to your app.py file, you can add the following code at the beginning of the script:
+
+```python
+import streamlit as st
+
+# Theme configuration
+st.set_page_config(
+    page_title="Smart Job Assistant",
+    page_icon="💼",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': 'https://www.example.com/help',
+        'Report a bug': "https://www.example.com/bug",
+        'About': "# Smart Job Assistant\nPowered by Gen AI 🚀"
+    },
+    theme={
+        "base": "dark",
+        "primaryColor": "#0321cb",
+        "backgroundColor": "#0c1027",
+        "secondaryBackgroundColor": "#0c1129"
+    }
+)
+
 # Packages 
 import os
 from dotenv import load_dotenv
