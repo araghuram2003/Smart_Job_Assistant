@@ -1,6 +1,6 @@
 [theme]
 base="dark"  # Options: "light" or "dark"
-primaryColor="#1f77b4"
-backgroundColor="#0e1117"
-secondaryBackgroundColor="#262730"
-textColor="#ffffff"
+primaryColor="#0321CB"
+backgroundColor="#0C1027"
+secondaryBackgroundColor="#0C1129"
+textColor="#FAFAFA"
