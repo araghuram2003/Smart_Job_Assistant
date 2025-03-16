@@ -315,10 +315,10 @@ Remember to:
                 
             messages = ATSAnalyzer.format_groq_messages(selected_lang, input_prompt, job_description, pdf_text, language)
 
-            # Using Mixtral model with optimized parameters
+            # Using mistral model with optimized parameters
             chat_completion = groq_client.chat.completions.create(
                 messages=messages,
-                model="mixtral-8x7b-32768",
+                model="mistral-saba-24b",
                 temperature=0.5,
                 max_tokens=4000,
                 top_p=1,
@@ -471,7 +471,7 @@ Remember to:
                     chat_completion = groq_client.chat.completions.create(
                         messages=[
                             {"role": "user","content": f"{prompt}\n\nResume:\n{resume_text}\n\nJob Description:\n{job_description}"}],
-                        model="mixtral-8x7b-32768",
+                        model="mistral-saba-24b",
                         temperature=0.5,)
                     generated_content = chat_completion.choices[0].message.content
 
