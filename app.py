@@ -109,7 +109,7 @@ Analyze the resume and provide:
     # Analysis types with their prompts
     ANALYSIS_TYPES = {
         "Complete Analysis": """Analyze my resume against the provided job description(s) and provide a comprehensive evaluation, including:
-1.Overall Match Score (%): Calculate the candidate's overall suitability (%). Explain the weighting of Key Skills, Experience, and Education.
+1.Overall Match Score (0 to 100): Calculate the candidate's overall suitability (%). Explain the weighting of Key Skills, Experience, and Education.
 
 2.Key Skills Match:
 Matching: List proficient skills.
