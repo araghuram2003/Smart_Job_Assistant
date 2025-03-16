@@ -3,7 +3,7 @@
 🚀 **A Smart Fusion of Google Gemini AI & Groq AI for Job Seekers**
 
 Smart Job Assistant is an AI-powered web application designed to help job seekers analyze their resumes and generate personalized cold emails effortlessly. Built with **Streamlit, HTML and CSS** for an intuitive UI, this project uses **Google Gemini AI** and **Groq AI** for advanced resume insights and automated email generation.
-[![Tap to visit website](https://imagekit.io/tools/asset-public-link?detail=%7B%22name%22%3A%22Screenshot%202025-03-16%20142010.png%22%2C%22type%22%3A%22image%2Fpng%22%2C%22signedurl_expire%22%3A%222028-03-15T08%3A52%3A10.203Z%22%2C%22signedUrl%22%3A%22https%3A%2F%2Fmedia-hosting.imagekit.io%2F%2F642e488d14d84d05%2FScreenshot%25202025-03-16%2520142010.png%3FExpires%3D1836723130%26Key-Pair-Id%3DK2ZIVPTIP2VGHC%26Signature%3DW6eIR0ga-UTScrakrdznphaWVNVw8WMyb4Kor5~1XMriUjevUUkWdrqRqZ-340~lqLA7CfL6WwsfMi8T2tH-UyMj5swzEUivvX22KA-ba5N02N57M2lWMKd54ysIftpgtWQP7UdvPT1Lk5axa29z2GFdzw4bcR9zP~9tgIrwDBSCc04JZbixrmaCMRh0X6fqPJP3g~Vycd4rNz23PbzazB9dVFbXdbkQYC4FbEOucm6224-Qo7B6783KT5wrSpWMfmwIR0hSEa~wbHu47s8lZruPg8X6e2PnVX9k542NLDTKvtlj1TD91kwJ2D35mklzBAgqUEN3BCH6MUo1D~aAsQ__%22%7D)](https://https://smartjobassistant.streamlit.app/)
+[![Tap to visit website](![Image](https://github.com/user-attachments/assets/df678169-e43d-4d7d-a173-2e63e48cb4f7))](smartjobassistant.streamlit.app)
 
 ---
 ## 🌟 Features
