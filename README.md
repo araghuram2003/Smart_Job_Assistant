@@ -27,7 +27,7 @@ Craft tailored cold emails for job applications.
 - Personalize your outreach to **increase response rates**.
 
 ### 🌍 Multi-Language Support
-Supports **English, Hindi, and Telugu**, allowing users to analyze resumes and generate cold emails in their preferred language.
+Supports **English, Hindi, and Telugu**, allowing users to analyze there resumes.
 
 ### 🔀 AI Model Selection
 - Choose between **Google Gemini AI** and **Groq AI** based on your preference.
