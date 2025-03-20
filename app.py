@@ -3,7 +3,7 @@ import streamlit as st
 # Title for the website "💼 Smart Job Assistant"
 st.set_page_config(
     page_title="Smart Job Assistant",
-    page_icon="https://github.com/user-attachments/assets/8378a263-c7c6-4578-aba4-9990653fbd3a",
+    page_icon="https://github.com/user-attachments/assets/a82e0911-f4e2-4598-8b69-1f18ac9902c3",
     layout="wide",
     initial_sidebar_state="expanded",
     menu_items={
